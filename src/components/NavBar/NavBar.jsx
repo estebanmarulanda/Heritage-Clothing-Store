@@ -2,12 +2,14 @@ import "../NavBar/NavBarStyle/NavBar.css"
 import logo from "../assets/logo.png"
 import { CartWidget } from "./CartWidget/CartWidget";
 import {RiSearchEyeLine,RiStoreFill,RiWhatsappLine} from "react-icons/ri"
+import { Link } from "react-router-dom";
+import { products } from "../DataBase/products";
 export function NavBar() {
-  return (
+    return (
     <div className="headerDiv">
             <div className="searchDiv">
                 <ul>
-                    <a href=""><li><RiSearchEyeLine/>Search</li></a>
+                    <Link to =""><li><RiSearchEyeLine/>Search</li></Link>
                     <a href=""><li><RiStoreFill/>Stores</li></a>
                     <a href=""><li><RiWhatsappLine/>WhatsApp</li></a>
                 </ul>
