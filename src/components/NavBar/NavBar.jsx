@@ -4,27 +4,28 @@ import { CartWidget } from "./CartWidget/CartWidget";
 import {RiSearchEyeLine,RiStoreFill,RiWhatsappLine} from "react-icons/ri"
 import { Link } from "react-router-dom";
 import { products } from "../DataBase/products";
+import { ItemListContainer } from "../ItemListContainer/ItemListContainer";
 export function NavBar() {
     return (
     <div className="headerDiv">
             <div className="searchDiv">
                 <ul>
                     <Link to =""><li><RiSearchEyeLine/>Search</li></Link>
-                    <a href=""><li><RiStoreFill/>Stores</li></a>
-                    <a href=""><li><RiWhatsappLine/>WhatsApp</li></a>
+                    <Link><li><RiStoreFill/>Stores</li></Link>
+                    <Link><li><RiWhatsappLine/>WhatsApp</li></Link>
                 </ul>
             </div>
             <div className="imgLogoDiv">
-                <a href=""><img className="logo" src={logo} alt="Change your browser" /></a>   
+                <Link to="/"><img className="logo" src={logo} alt="Change your browser" /></Link>
             </div>
 
             <div className="itemsDiv">
                 <ul>
-                    <a href=""><li>Women</li></a>
-                    <a href=""><li>Men</li></a>
-                    <a href=""><li>Denim</li></a>
-                    <a href=""><li>Discounts</li></a>
-                    <a href=""><li> Gift Cards</li></a>
+                    <Link to="/category/women"><li>Women</li></Link>
+                    <Link to="/category/men"><li>Men</li></Link> 
+                    <Link to="/"><li>Denim</li></Link>
+                    <Link ><li>Discounts</li></Link>
+                    <Link ><li> Gift Cards</li></Link>
                 </ul>
             </div>
             <div className="cartDiv">

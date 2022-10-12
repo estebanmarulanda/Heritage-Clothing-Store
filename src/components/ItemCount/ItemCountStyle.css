@@ -1,0 +1,25 @@
+.mainItemCountDiv {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.minusSign {
+  grid-column: 1/3;
+  grid-row: 1/4;
+}
+
+.productCount {
+  grid-column: 2/3;
+  grid-row: 1/4;
+}
+
+.addSign {
+  grid-column: 3/3;
+  grid-row: 1/4;
+}
+
+.addToCartBtn {
+  grid-column: 2/3;
+  grid-row: 2/3;
+}/*# sourceMappingURL=ItemCountStyle.css.map */
