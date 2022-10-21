@@ -3,8 +3,7 @@ import logo from "../assets/logo.png"
 import { CartWidget } from "./CartWidget/CartWidget";
 import {RiSearchEyeLine,RiStoreFill,RiWhatsappLine} from "react-icons/ri"
 import { Link } from "react-router-dom";
-import { products } from "../DataBase/products";
-import { ItemListContainer } from "../ItemListContainer/ItemListContainer";
+
 export function NavBar() {
     return (
     <div className="headerDiv">
@@ -29,7 +28,7 @@ export function NavBar() {
                 </ul>
             </div>
             <div className="cartDiv">
-                <li><CartWidget/></li>
+               <Link to="/cart"><li><CartWidget/></li></Link> 
             </div>
         </div>
   );

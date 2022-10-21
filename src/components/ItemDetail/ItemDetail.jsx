@@ -1,22 +1,33 @@
+import { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { CartContext } from "../../context/cartContext";
 import { ItemCount } from "../ItemCount/ItemCount";
+import "../ItemDetail/ItemDetailStyle.css";
 
-export const ItemDetail = ({cardDetail}) => {
-    return(
-        <div className="cardProduct">
-      <Card style={{ width: "18rem"}}>
+export const ItemDetail = ({item}) => {
+  const {addProduct} = useContext(CartContext);
+  const addToCart = (quantity) => { 
+    addProduct(item,quantity);
+    
+    
+  }
+
+  return(
+        <div className="mainDivContainer">
+      <Card className="cardProduct">
         <Card.Img
           variant="top"
-          src={cardDetail.picture}
+          src={item.picture}
         />
         <Card.Body>
-          <Card.Title>{cardDetail.name}</Card.Title>
-          <Card.Text>{`${cardDetail.price} USD`}</Card.Text>
-          <ItemCount/>
-          <Button variant="primary">Buy</Button>
+          <Card.Title>{item.name}</Card.Title>
+          <Card.Text>{`${item.price} USD`}</Card.Text>
+          <ItemCount onAdd = {addToCart}/>
+          <Button className="buyBtn" variant="primary">Buy</Button>
         </Card.Body>
       </Card>
+  
     </div>
     )
 }

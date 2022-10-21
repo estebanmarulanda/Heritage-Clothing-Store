@@ -14,7 +14,7 @@ export const FooterDesign = () => {
   return (
     <div className="mainFooterDiv">
       {/*left footer  */}
-      <div class="footer-left">
+      <div className="footer-left">
         <div>
           <p>Manizales, Colombia {<IoLocation />}</p>
         </div>
@@ -30,17 +30,17 @@ export const FooterDesign = () => {
 
       {/* right footer */}
 
-      <div class="footer-right">
-        <div class="form__group field">
+      <div className="footer-right">
+        <div className="form__group field">
           <input
             type="input"
-            class="form__field"
+            className="form__field"
             placeholder="Enter your email"
             name="name"
             id="name"
             required
           />
-          <label for="name" class="form__label">
+          <label htmlFor="name" className="form__label">
             Catch up with the latest collection!
           </label>
         </div>

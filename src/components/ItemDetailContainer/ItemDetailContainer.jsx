@@ -27,7 +27,7 @@ export const ItemDetailContainer = () => {
   return (
     
     <div>
-        <ItemDetail cardDetail={products}/>
+        <ItemDetail item={products}/>
     </div>
     
     )
