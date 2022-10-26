@@ -1,39 +1,45 @@
-import { arrProducts } from "../DataBase/products";
+import {collection, doc, getDoc, getDocs} from "firebase/firestore";
+import {db} from "../../utils/firebase";
 import { useEffect, useState } from "react";
 import { ItemList } from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
 import "./ItemListContainerStyle.css";
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
+import { async } from "@firebase/util";
 
 export const ItemListContainer = () => {
   const { categoryId } = useParams();
   const [loading, setLoading] = useState(true);
-
   const [products, setProducts] = useState([]);
-  const getProducts = () => {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(arrProducts);
-      }, 1000);
-    });
-  };
+ 
+  useEffect(()=>{
+    const getData = async()=>{
+      //crear referencia del punto de acceso de la info
+      const queryRef = collection(db, "products");
+      //obtener tdos lod sdocs de la ref products
+      const response =  await getDocs(queryRef);
+      const documents = response.docs
 
-  useEffect(() => {
-    //API call
-    getProducts().then((result) => {
+      const results = documents.map((element)=>{
+        return({
+          ...element.data(),
+          id: element.id
+        })
+      })
       if (categoryId) {
-        const filteredCategory = result.filter(
+        const filteredCategory = results.filter(
           (ele) => ele.category === categoryId
         );
         setProducts(filteredCategory);
         setLoading(false);
       } else {
-        setProducts(result);
+        setProducts(results);
         setLoading(false);
       }
-    });
-  }, [categoryId]);
+    }
+    getData();
+  },[categoryId])
   return (
     <div className="mainItemsDiv">
       {loading ? (

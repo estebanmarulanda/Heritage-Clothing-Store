@@ -36,4 +36,12 @@
 .buyBtn {
   display: flex;
   width: 100%;
+}
+
+.confirmation_div {
+  display: flex;
+  gap: 20px;
+}
+.confirmation_div .icon {
+  color: rgb(7, 67, 33);
 }/*# sourceMappingURL=ItemCountStyle.css.map */
