@@ -1,8 +1,11 @@
-import { useContext } from "react";
+import Swal from 'sweetalert2';
+import {collection, addDoc} from "firebase/firestore";
+import {db} from "../../utils/firebase";
+import { useContext} from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/cartContext";
 import "../CartContainer/CartContainerStyle.css";
-import logo from "../assets/logo.png"
+import logo from "../assets/logo.png";
 import {
   BsPlusSquare,
   BsDashSquare,
@@ -21,6 +24,43 @@ export const CartContainer = () => {
     emptyCart,
   } = useContext(CartContext);
 
+
+
+  const sendOrder = (evt) =>{
+    evt.preventDefault();
+    const order = {
+      buyer:{
+                shippingAddress: evt.target[0].value,
+                fullName: evt.target[1].value,
+                cardHolderName: evt.target[2].value,
+                cardNumber: evt.target[3].value,
+                cardType: evt.target[4].value,
+                expiry: evt.target[5].value,
+                cvv: evt.target[6].value
+      },
+                
+    items: cartProducts,
+    totalPrice: getTotal(),
+    date: new Date().toLocaleDateString()
+  }
+  const queryRefOrder = collection(db,"orders");
+  addDoc(queryRefOrder,order)
+  .then((response)=>{
+    /* sweet alert */
+    Swal.fire({
+      toast: false,
+      icon: 'success',
+      title: "Successful purchase",
+      text: `Your purchase ID is: ${response.id}`,
+      showConfirmButton: true,
+      position: 'center',
+      background: 'rgba(16, 169, 5, 0.9)',
+  }) 
+    // emptyCart()
+  })
+  
+}
+
   /* Local Storage */
 
   const deleteItem = (id) => {
@@ -32,14 +72,16 @@ export const CartContainer = () => {
   if (cartProducts.length === 0) {
     return (
       <div className="empty_products_div">
-        <p>Empty cart</p>
-        <Link to={"/"}>
-          <button>Go to homepage</button>
-        </Link>
+        <div className="emptycart_img">
+          <h2>Oops! Your cart is empty, start shopping!</h2>
+          <Link to={"/"}>
+            <button>Go to shopping section</button>
+          </Link>
+        </div>
       </div>
     );
   }
-
+  
   return (
     <div className="main_cart_container_div">
       {/* div for cart with products */}
@@ -123,48 +165,83 @@ export const CartContainer = () => {
         </ul>
       </div>
       <div class="mainscreen">
-      <div class="card">
-        <div class="leftside">
-          <img
-            src={logo}
-            class="product"
-            alt="Shoes"
-          />
-        </div>
-        <div class="rightside">
-          <form action="">
-            <h2>CheckOut</h2>
-            <h2>Payment Information</h2>
-            <p>Shipping address</p>
-            <input type="text" class="inputbox" name="name" placeholder="enter your shipping address" required />
-            <p>Full Name</p>
-            <input type="text" class="inputbox" name="name" placeholder="enter your full name" required />
-            <p>Cardholder Name</p>
-            <input type="text" class="inputbox" name="name" placeholder="enter your cc name" required />
-            <p>Card Number</p>
-            <input type="number" class="inputbox" name="card_number" placeholder="CC number" id="card_number" required />
+        <div class="card">
+          <div class="leftside">
+            <img src={logo} class="product" alt="Shoes" />
+          </div>
+          <div class="rightside">
+            {/* Form html */}
+            <form onSubmit={sendOrder}>
+              <h2>CheckOut</h2>
+              <h2>Payment Information</h2>
+              <p>Shipping address</p>
+              <input
+                type="text"
+                class="inputbox"
+                name="name"
+                placeholder="enter your shipping address"
+                required
+              />
+              <p>Full Name</p>
+              <input
+                type="text"
+                class="inputbox"
+                name="name"
+                placeholder="enter your full name"
+                required
+              />
+              <p>Cardholder Name</p>
+              <input
+                type="text"
+                class="inputbox"
+                name="name"
+                placeholder="enter your cc name"
+                required
+              />
+              <p>Card Number</p>
+              <input
+                type="number"
+                class="inputbox"
+                name="card_number"
+                placeholder="CC number"
+                id="card_number"
+                required
+              />
 
-            <p>Card Type</p>
-            <select class="inputbox" name="card_type" id="card_type" required>
-              <option value="">--Select a Card Type--</option>
-              <option value="Visa">Visa</option>
-              <option value="RuPay">RuPay</option>
-              <option value="MasterCard">MasterCard</option>
-            </select>
-<div class="expcvv">
+              <p>Card Type</p>
+              <select class="inputbox" name="card_type" id="card_type" required>
+                <option value="">--Select a Card Type--</option>
+                <option value="Visa">Visa</option>
+                <option value="RuPay">RuPay</option>
+                <option value="MasterCard">MasterCard</option>
+              </select>
+              <div class="expcvv">
+                <p class="expcvv_text">Expiry</p>
+                <input
+                  type="date"
+                  class="inputbox"
+                  name="exp_date"
+                  id="exp_date"
+                  required
+                />
 
-            <p class="expcvv_text">Expiry</p>
-            <input type="date" class="inputbox" name="exp_date" id="exp_date" required />
-
-            <p class="expcvv_text2">CVV</p>
-            <input type="password" class="inputbox" name="cvv" id="cvv" placeholder="* * *" required />
-        </div>
-            <p></p>
-            <button type="submit" class="button">CheckOut</button>
-          </form>
+                <p class="expcvv_text2">CVV</p>
+                <input
+                  type="password"
+                  class="inputbox"
+                  name="cvv"
+                  id="cvv"
+                  placeholder="* * *"
+                  required
+                />
+              </div>
+              <button type="submit" class="button">
+                CheckOut
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };
