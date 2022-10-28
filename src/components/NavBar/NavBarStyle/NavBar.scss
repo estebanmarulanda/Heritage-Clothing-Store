@@ -22,6 +22,12 @@ header {
     grid-template-rows: 2;
 }
 
+.items{
+    @include hoverEffectNavBar;
+    text-decoration: none;
+}
+
+
 /* ImgLogoDiv */
 .imgLogoDiv :hover{
 
@@ -49,9 +55,6 @@ header {
 
 }
 
-.itemsDiv {
-    @include hoverEffectNavBar;
-}
 
 /* Cart div */
 .cartDiv {

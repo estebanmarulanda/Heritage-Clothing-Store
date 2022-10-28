@@ -1,7 +1,7 @@
-import Swal from 'sweetalert2';
-import {collection, addDoc} from "firebase/firestore";
-import {db} from "../../utils/firebase";
-import { useContext} from "react";
+import Swal from "sweetalert2";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../../utils/firebase";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/cartContext";
 import "../CartContainer/CartContainerStyle.css";
@@ -24,42 +24,38 @@ export const CartContainer = () => {
     emptyCart,
   } = useContext(CartContext);
 
-
-
-  const sendOrder = (evt) =>{
+  const sendOrder = (evt) => {
     evt.preventDefault();
     const order = {
-      buyer:{
-                shippingAddress: evt.target[0].value,
-                fullName: evt.target[1].value,
-                cardHolderName: evt.target[2].value,
-                cardNumber: evt.target[3].value,
-                cardType: evt.target[4].value,
-                expiry: evt.target[5].value,
-                cvv: evt.target[6].value
+      buyer: {
+        shippingAddress: evt.target[0].value,
+        fullName: evt.target[1].value,
+        cardHolderName: evt.target[2].value,
+        cardNumber: evt.target[3].value,
+        cardType: evt.target[4].value,
+        expiry: evt.target[5].value,
+        cvv: evt.target[6].value,
       },
-                
-    items: cartProducts,
-    totalPrice: getTotal(),
-    date: new Date().toLocaleDateString()
-  }
-  const queryRefOrder = collection(db,"orders");
-  addDoc(queryRefOrder,order)
-  .then((response)=>{
-    /* sweet alert */
-    Swal.fire({
-      toast: false,
-      icon: 'success',
-      title: "Successful purchase",
-      text: `Your purchase ID is: ${response.id}`,
-      showConfirmButton: true,
-      position: 'center',
-      background: 'rgba(16, 169, 5, 0.9)',
-  }) 
-    // emptyCart()
-  })
-  
-}
+
+      items: cartProducts,
+      totalPrice: getTotal(),
+      date: new Date().toLocaleDateString(),
+    };
+    const queryRefOrder = collection(db, "orders");
+    addDoc(queryRefOrder, order).then((response) => {
+      /* sweet alert */
+      Swal.fire({
+        toast: false,
+        icon: "success",
+        title: "Successful purchase",
+        text: `Your purchase ID is: ${response.id}`,
+        showConfirmButton: true,
+        position: "center",
+        background: "#95A5A6",
+      });
+       emptyCart()
+    });
+  };
 
   /* Local Storage */
 
@@ -72,8 +68,11 @@ export const CartContainer = () => {
   if (cartProducts.length === 0) {
     return (
       <div className="empty_products_div">
-        <div className="emptycart_img">
-          <h2>Oops! Your cart is empty, start shopping!</h2>
+        <h2>Oops! Your cart is empty, start shopping!</h2>
+        <div className="emptycart_div">
+          <img src="https://www.reprotel.com/content/images/empty-cart.png" alt="emptyCart"></img>
+        </div>
+        <div className="go_to_shopping_div">
           <Link to={"/"}>
             <button>Go to shopping section</button>
           </Link>
@@ -81,7 +80,7 @@ export const CartContainer = () => {
       </div>
     );
   }
-  
+
   return (
     <div className="main_cart_container_div">
       {/* div for cart with products */}
@@ -94,7 +93,7 @@ export const CartContainer = () => {
             <div className="col col-3">Quantity</div>
             <div className="col col-4">Total item price</div>
           </li>
-
+          {/* Cart products rendering */}
           {cartProducts.map((product) => (
             <div key={product.id}>
               {/* table limits */}

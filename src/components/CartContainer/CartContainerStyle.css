@@ -247,14 +247,55 @@ p {
 /* end of payment form style */
 .empty_products_div {
   width: 100%;
-  height: 500px;
-  background: url(https://www.reprotel.com/content/images/empty-cart.png);
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  display: flex;
+  flex-direction: column;
 }
-.empty_products_div .emptycart_img {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+.empty_products_div h2 {
+  color: #253c20;
+}
+.empty_products_div .emptycart_div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.empty_products_div .emptycart_div img {
+  width: 550px;
+}
+.empty_products_div .go_to_shopping_div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.empty_products_div .go_to_shopping_div button {
+  color: #020303;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: larger;
+  background: radial-gradient(100% 100% at top left, #b6e2d3 98%, #229c73), radial-gradient(100% 100% at bottom right, #b6e2d3 98%, #229c73), radial-gradient(100% 100% at top left, #b6e2d3 98%, #229c73), radial-gradient(100% 100% at bottom right, #b6e2d3 98%, #229c73), #229c73;
+  -webkit-background-clip: text, text, padding-box, padding-box, text;
+  background-clip: text, text, padding-box, padding-box, text;
+  background-size: 0% 0%;
+  background-position: top left, bottom right;
+  background-repeat: no-repeat;
+  transition: 0.5s;
+}
+.empty_products_div .go_to_shopping_div button:hover {
+  background-size: 50% 100%;
+  border-radius: 15%;
+}
+.empty_products_div .go_to_shopping_div button {
+  margin-bottom: 50px;
+  border-bottom: #95A5A6 1px solid;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  background-color: #253c20;
 }/*# sourceMappingURL=CartContainerStyle.css.map */

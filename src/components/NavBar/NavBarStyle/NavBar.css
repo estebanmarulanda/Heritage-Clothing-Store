@@ -19,6 +19,31 @@ header {
   grid-template-rows: 2;
 }
 
+.items {
+  text-decoration: none;
+}
+.items a {
+  text-decoration: none;
+}
+.items li {
+  color: #020303;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: larger;
+  padding: 10px;
+  background: radial-gradient(100% 100% at top left, #b6e2d3 98%, #229c73), radial-gradient(100% 100% at bottom right, #b6e2d3 98%, #229c73), radial-gradient(100% 100% at top left, #b6e2d3 98%, #229c73), radial-gradient(100% 100% at bottom right, #b6e2d3 98%, #229c73), #229c73;
+  -webkit-background-clip: text, text, padding-box, padding-box, text;
+  background-clip: text, text, padding-box, padding-box, text;
+  background-size: 0% 0%;
+  background-position: top left, bottom right;
+  background-repeat: no-repeat;
+  transition: 0.5s;
+}
+.items li:hover {
+  background-size: 50% 100%;
+  border-radius: 15%;
+}
+
 /* ImgLogoDiv */
 .imgLogoDiv :hover {
   position: relative;
@@ -42,7 +67,7 @@ header {
 .searchDiv a {
   text-decoration: none;
 }
-.searchDiv a li {
+.searchDiv li {
   color: #020303;
   text-decoration: none;
   font-weight: 600;
@@ -56,29 +81,7 @@ header {
   background-repeat: no-repeat;
   transition: 0.5s;
 }
-.searchDiv a li:hover {
-  background-size: 50% 100%;
-  border-radius: 15%;
-}
-
-.itemsDiv a {
-  text-decoration: none;
-}
-.itemsDiv a li {
-  color: #020303;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: larger;
-  padding: 10px;
-  background: radial-gradient(100% 100% at top left, #b6e2d3 98%, #229c73), radial-gradient(100% 100% at bottom right, #b6e2d3 98%, #229c73), radial-gradient(100% 100% at top left, #b6e2d3 98%, #229c73), radial-gradient(100% 100% at bottom right, #b6e2d3 98%, #229c73), #229c73;
-  -webkit-background-clip: text, text, padding-box, padding-box, text;
-  background-clip: text, text, padding-box, padding-box, text;
-  background-size: 0% 0%;
-  background-position: top left, bottom right;
-  background-repeat: no-repeat;
-  transition: 0.5s;
-}
-.itemsDiv a li:hover {
+.searchDiv li:hover {
   background-size: 50% 100%;
   border-radius: 15%;
 }
@@ -100,7 +103,7 @@ header {
 .cartDiv li a {
   text-decoration: none;
 }
-.cartDiv li a li {
+.cartDiv li li {
   color: #020303;
   text-decoration: none;
   font-weight: 600;
@@ -114,7 +117,7 @@ header {
   background-repeat: no-repeat;
   transition: 0.5s;
 }
-.cartDiv li a li:hover {
+.cartDiv li li:hover {
   background-size: 50% 100%;
   border-radius: 15%;
 }

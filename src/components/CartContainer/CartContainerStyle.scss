@@ -248,12 +248,39 @@ p{
 /* end of payment form style */
 .empty_products_div{
   width: 100%;
-  height: 500px;
-  background: url(https://www.reprotel.com/content/images/empty-cart.png);
+  height: fit-content;
   background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  .emptycart_img{
-    width: fit-content;
+  display: flex;
+  flex-direction: column;
+  h2{
+    color: #253c20;
   }
+  .emptycart_div{
+     width:100%;
+     height: 100%;
+     display: flex;
+     justify-content: center;
+    align-content: center;
+  img{
+    width: 550px;
+  }
+  }
+.go_to_shopping_div{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  @include ButtonHoverEffect;
+  
+  button{
+    margin-bottom: 50px;
+    border-bottom: #95A5A6 1px solid;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    background-color: #253c20;
+    
+  }
+}
 }

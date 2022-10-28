@@ -20,11 +20,11 @@ export function NavBar() {
 
             <div className="itemsDiv">
                 <ul>
-                    <Link to="/category/women"><li>Women</li></Link>
-                    <Link to="/category/men"><li>Men</li></Link> 
-                    <Link to="/"><li>Denim</li></Link>
-                    <Link ><li>Discounts</li></Link>
-                    <Link ><li> Gift Cards</li></Link>
+                    <Link className="items" to="/category/women"><li>Women</li></Link>
+                    <Link className="items" to="/category/men"><li>Men</li></Link> 
+                    <Link className="items" to="/"><li>Denim</li></Link>
+                    <Link className="items"><li>Discounts</li></Link>
+                    <Link className="items"><li>Gift Cards</li></Link>
                 </ul>
             </div>
             <div className="cartDiv">
@@ -34,3 +34,4 @@ export function NavBar() {
   );
 }
 
+/* <NavLink to="/category/women"><li>Women</li></NavLink> */
