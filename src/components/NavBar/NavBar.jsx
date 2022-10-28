@@ -2,7 +2,7 @@ import "../NavBar/NavBarStyle/NavBar.css"
 import logo from "../assets/logo.png"
 import { CartWidget } from "./CartWidget/CartWidget";
 import {RiSearchEyeLine,RiStoreFill,RiWhatsappLine} from "react-icons/ri"
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export function NavBar() {
     return (
@@ -15,13 +15,13 @@ export function NavBar() {
                 </ul>
             </div>
             <div className="imgLogoDiv">
-                <Link to="/"><img className="logo" src={logo} alt="Change your browser" /></Link>
+                <Link to="/"><img className="logo" src={logo} alt="heritage-clothing-store" /></Link>
             </div>
 
             <div className="itemsDiv">
                 <ul>
-                    <Link className="items" to="/category/women"><li>Women</li></Link>
-                    <Link className="items" to="/category/men"><li>Men</li></Link> 
+                    <NavLink className={({ isActive }) => isActive === true ? 'activeClass' : 'inactiveClass'} to="/category/women"><li>Women</li></NavLink>
+                    <NavLink  className={({ isActive }) => isActive === true ? 'activeClass' : 'inactiveClass'} to="/category/men"><li>Men</li></NavLink> 
                     <Link className="items" to="/"><li>Denim</li></Link>
                     <Link className="items"><li>Discounts</li></Link>
                     <Link className="items"><li>Gift Cards</li></Link>
@@ -33,5 +33,3 @@ export function NavBar() {
         </div>
   );
 }
-
-/* <NavLink to="/category/women"><li>Women</li></NavLink> */
