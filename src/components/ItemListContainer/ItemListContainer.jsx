@@ -1,4 +1,4 @@
-import {collection, doc, getDoc, getDocs} from "firebase/firestore";
+import {collection, getDocs} from "firebase/firestore";
 import {db} from "../../utils/firebase";
 import { useEffect, useState } from "react";
 import { ItemList } from "../ItemList/ItemList";
@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import "./ItemListContainerStyle.css";
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
-import { async } from "@firebase/util";
+
 
 export const ItemListContainer = () => {
   const { categoryId } = useParams();

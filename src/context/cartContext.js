@@ -89,11 +89,6 @@ const emptyCart = () =>{
 
 }
 
-   
-    
-        // let productStorage = JSON.parse(localStorage.getItem("products"))
-       
-
 
     return(
         <CartContext.Provider value={{cartProducts, addProduct,getTotal,setCartProducts,getAmountOfItems,addItem,removeItem,emptyCart}}>

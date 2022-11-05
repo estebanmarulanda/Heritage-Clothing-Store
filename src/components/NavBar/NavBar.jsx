@@ -10,7 +10,7 @@ export function NavBar() {
             <div className="searchDiv">
                 <ul>
                     <Link to =""><li><RiSearchEyeLine/>Search</li></Link>
-                    <Link><li><RiStoreFill/>Stores</li></Link>
+                    <Link to={"/stores"}><li><RiStoreFill/>Stores</li></Link>
                     <Link><li><RiWhatsappLine/>WhatsApp</li></Link>
                 </ul>
             </div>

@@ -23,7 +23,6 @@ export const CartContainer = () => {
     removeItem,
     emptyCart,
   } = useContext(CartContext);
-
   const sendOrder = (evt) => {
     evt.preventDefault();
     const order = {
@@ -80,6 +79,7 @@ export const CartContainer = () => {
       </div>
     );
   }
+
 
   return (
     <div className="main_cart_container_div">
