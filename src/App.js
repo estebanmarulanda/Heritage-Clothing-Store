@@ -7,6 +7,7 @@ import {FooterDesign} from "./components/Footer/Footer";
 import { CartProvider } from './context/cartContext';
 import {CartContainer} from "./components/CartContainer/CartContainer";
 import {Stores} from "./components/Stores/Stores"
+import {ContactMe} from "./components/ContactMe/ContactMe"
 function App() {
   return (
    <CartProvider>
@@ -22,6 +23,7 @@ function App() {
               <Route path='/item/:id' element={<ItemDetailContainer/>}/>
               <Route path='/cart' element={<CartContainer/>}/>
               <Route path='/stores' element={<Stores/>}/>
+              <Route path='/ContactMe' element={<ContactMe/>}/>
             </Routes>
           </main>
           <footer>

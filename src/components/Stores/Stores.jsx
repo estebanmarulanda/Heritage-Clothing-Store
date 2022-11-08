@@ -1,6 +1,7 @@
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import Button from "react-bootstrap/Button";
-import Spinner from "react-bootstrap/Spinner";
+import Spinner from 'react-bootstrap/Spinner';
+
 import "./storesStyle.css";
 
 export const Stores = () => {
@@ -12,15 +13,15 @@ export const Stores = () => {
     return (
       <div>
         <Button variant="primary" disabled>
-          <Spinner
-            as="span"
-            animation="grow"
-            size="sm"
-            role="status"
-            aria-hidden="true"
-          />
-          Loading...
-        </Button>
+        <Spinner
+          as="span"
+          animation="grow"
+          size="sm"
+          role="status"
+          aria-hidden="true"
+        />
+        Loading...
+      </Button>
       </div>
     );
 
@@ -35,7 +36,7 @@ function Map(){
     
     return(
         <div>
-            <div><h1 className="h1">Visit our nearest stores!</h1></div>
+            <div className="h1"><h1>Visit our nearest stores!</h1></div>
             <div>
             <GoogleMap zoom={5} center={{lat:4.570868 , lng:-74.297333}} mapContainerClassName="map-container">
                 <Marker position={{lat:4.570868, lng:-74.297333}}/>

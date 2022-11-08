@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 
 
+
 export const ItemListContainer = () => {
   const { categoryId } = useParams();
   const [loading, setLoading] = useState(true);
@@ -44,16 +45,17 @@ export const ItemListContainer = () => {
     <div className="mainItemsDiv">
       {loading ? (
         <div>
-          <Button variant="primary" disabled>
-            <Spinner
-              as="span"
-              animation="grow"
-              size="sm"
-              role="status"
-              aria-hidden="true"
-            />
-            Loading...
-          </Button>
+           <Button variant="primary" disabled>
+        <Spinner
+          as="span"
+          animation="grow"
+          size="sm"
+          role="status"
+          aria-hidden="true"
+        />
+        Loading...
+      </Button>
+    
         </div>
       ) : (
         <ItemList items={products} />

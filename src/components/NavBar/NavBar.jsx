@@ -11,7 +11,7 @@ export function NavBar() {
                 <ul>
                     <Link to =""><li><RiSearchEyeLine/>Search</li></Link>
                     <Link to={"/stores"}><li><RiStoreFill/>Stores</li></Link>
-                    <Link><li><RiWhatsappLine/>WhatsApp</li></Link>
+                    <Link to={"/ContactMe"}><li><RiWhatsappLine/>WhatsApp</li></Link>
                 </ul>
             </div>
             <div className="imgLogoDiv">
