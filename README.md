@@ -4,7 +4,7 @@ This project was developed as part of the Coder House React course.
 
 it currently meets the logical requirements for course evaluation. The use of Javascript and React logic was prioritized over web design and responsiveness.
 To properly visualize all the elements of the websites it is better to open it in a Desktop PC.
-There are some components yet to be worked on such as the elements in the navbar, the current elements working on are: "Women" "Men" and "Cart"
+There are some components yet to be worked on such as the elements in the navbar, the current elements working on are: "Women" "Men", "Cart", "Whatsapp" and "Stores"
 
 ## Description
 This is an online clothing store which allows potential customers buy in an easy manner all kind of clothes.
